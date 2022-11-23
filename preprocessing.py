@@ -3,9 +3,6 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 def preprocess(df, option):
-    """
-    This function is to cover all the preprocessing steps on the churn dataframe. It involves selecting important features, encoding categorical data, handling missing values,feature scaling and splitting the data
-    """
 
     # Defining the map function
     def binary_map(feature):
