@@ -27,7 +27,7 @@ def set_png_as_page_bg(png_file):
     background-image: url("data:image/png;base64,%s");
     min-height: 200px;
     background-attachment: scroll;
-    background-position: 300px 1850px;
+    background-position: 300px 1800px;
     background-size: cover;
     }
     </style>
