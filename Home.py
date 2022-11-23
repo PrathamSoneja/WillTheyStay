@@ -39,7 +39,6 @@ def set_png_as_page_bg(png_file):
 def main():
     #Setting Application title
     st.title('WillTheyStay.ai')
-
       #Setting Application description
     st.markdown("""
      :dart:  This Streamlit app is made to predict customer churn in a ficitional telecommunication use case.
