@@ -17,7 +17,7 @@ def main():
       #Setting Application description
     st.markdown("""
      :dart:  This Streamlit app is made to predict customer churn in a ficitional telecommunication use case.
-    The application is functional for both online prediction and batch data prediction. n
+    The application is functional for both online prediction and batch data prediction.
     """)
     st.markdown("<h3></h3>", unsafe_allow_html=True)
 
@@ -87,26 +87,26 @@ def main():
                 st.success('No, the customer is happy with Telco Services.')
 
 
-        else:
-            st.subheader("Dataset upload")
-            uploaded_file = st.file_uploader("Choose a file")
-            if uploaded_file is not None:
-                data = pd.read_csv(uploaded_file)
-                #Get overview of data
-                st.write(data.head())
-                st.markdown("<h3></h3>", unsafe_allow_html=True)
-                #Preprocess inputs
-                preprocess_df = preprocess(data, "Batch")
-                if st.button('Predict'):
-                    #Get batch prediction
-                    prediction = model.predict(preprocess_df)
-                    prediction_df = pd.DataFrame(prediction, columns=["Predictions"])
-                    prediction_df = prediction_df.replace({1:'Yes, the customer will terminate the service.',
+    else:
+        st.subheader("Dataset upload")
+        uploaded_file = st.file_uploader("Choose a file")
+        if uploaded_file is not None:
+            data = pd.read_csv(uploaded_file)
+            #Get overview of data
+            st.write(data.head())
+            st.markdown("<h3></h3>", unsafe_allow_html=True)
+            #Preprocess inputs
+            preprocess_df = preprocess(data, "Batch")
+            if st.button('Predict'):
+            #Get batch prediction
+                prediction = model.predict(preprocess_df)
+                prediction_df = pd.DataFrame(prediction, columns=["Predictions"])
+                prediction_df = prediction_df.replace({1:'Yes, the customer will terminate the service.',
                                                         0:'No, the customer is happy with Telco Services.'})
 
-                    st.markdown("<h3></h3>", unsafe_allow_html=True)
-                    st.subheader('Prediction')
-                    st.write(prediction_df)
+                st.markdown("<h3></h3>", unsafe_allow_html=True)
+                st.subheader('Prediction')
+                st.write(prediction_df)
 
 if __name__ == '__main__':
         main()
