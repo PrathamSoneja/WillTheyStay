@@ -9,6 +9,32 @@ model = joblib.load(r"churn_predictor.sav")
 
 #Import python scripts
 from preprocessing import preprocess
+import base64
+
+
+@st.cache(allow_output_mutation=True)
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+
+def set_png_as_page_bg(png_file):
+    bin_str = get_base64_of_bin_file(png_file)
+    page_bg_img = '''
+    <style>
+    .stApp {
+    background-image: url("data:image/png;base64,%s");
+    min-height: 200px;
+    background-attachment: scroll;
+    background-position: 300px 1850px;
+    background-size: cover;
+    }
+    </style>
+    ''' % bin_str
+
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    return
 
 def main():
     #Setting Application title
@@ -20,6 +46,8 @@ def main():
     The application is functional for both online prediction and batch data prediction.
     """)
     st.markdown("<h3></h3>", unsafe_allow_html=True)
+
+    set_png_as_page_bg('joakim-honkasalo-ssvjJLB6wIw-unsplash.jpg')
 
     #Setting Application sidebar default
     #image = Image.open('App.jpg')
