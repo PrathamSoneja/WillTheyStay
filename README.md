@@ -18,7 +18,7 @@ Pull requests and suggestions for improvement are welcome.
 
 ## Licensing
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the Mozilla Public License - see the LICENSE.md file for details
 ## Acknowledgments
 
     Kaggle
